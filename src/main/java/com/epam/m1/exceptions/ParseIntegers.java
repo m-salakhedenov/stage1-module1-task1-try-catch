@@ -16,14 +16,19 @@ public class ParseIntegers {
                             .split(" "));
 
     public static void main(String[] args) {
-        Iterator<String> words = WORDS.iterator();
         int sum = 0;
-        String justWords = "";
-        while (words.hasNext()) {
-            String next = words.next();
-            int number = Integer.parseInt(next);
-            // todo: complete it
+        StringBuilder justWords = new StringBuilder();
+
+        for (String word : WORDS) {
+            try {
+                int number = Integer.parseInt(word);
+                sum += number;
+
+            } catch (NumberFormatException ignored) {
+                justWords.append(" ").append(word);
+            }
         }
+
         System.out.println("Sum is " + sum);
         System.out.println("Just words:" + justWords);
     }
